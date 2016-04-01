@@ -1,1 +1,4 @@
-#RevealJS slides for Node-RED
+#reveal.js slides for Node-RED
+
+    $ npm install
+    $ grunt serve
