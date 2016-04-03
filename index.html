@@ -94,6 +94,7 @@
 					<section data-markdown>
 						<script type="text/template">
 								### The Need For Data Wiring
+								* Gluecode that is not the focus of the prototype
 								* Many devices in a project, they need to talk to each other in some way
 									* Different potocols: Serial, WebSocket, REST
 									* Different data formats: messages, raw value reading
@@ -107,9 +108,27 @@
 						<script type="text/template">
 							### Some Examples:
 							* I have a temperature sensor, I want to get a text alert if it gets too hot, and maybe compare with live weather data to see if the reading is right
-							
+							* I have a OBD2 reader connected to my car that reads vehicle information. I want to post memes to my facebook if I go above the speed limit in a given area
 						</script>
 					</section>
+			</section>
+			<section>
+				<section data-markdown>
+					<script type="text/template">
+						### Introducing Node-RED:
+						* A Node.js app
+						* Provides a browser-based visual tool for data wiring
+						* Nodes:
+						 * reusable data endpoints/functions/code snippets
+						 * Input/Output/Processing Nodes
+						 * Can be wired together
+						* Data flow can be exported to JSON
+					</script>
+				</section>
+				<section>
+					<h2><a href="http://192.241.201.203:1880/" target="_blank">Node-RED Demo</a></h2>
+					<iframe src="http://192.241.201.203:1880/" width="100%" style="min-height:600px; min-width: 1000px"></iframe>
+				</section>
 			</section>
 			</div>
 
