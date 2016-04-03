@@ -36,6 +36,11 @@
         margin-left: 0;
         margin-right: 0;
     }
+
+		#htmlBlock{
+			min-height: 580px;
+			overflow: hidden;
+		}
 </style>
 
 		<!--[if lt IE 9]>
@@ -128,6 +133,79 @@
 				<section>
 					<h2><a href="http://192.241.201.203:1880/" target="_blank">Node-RED Demo</a></h2>
 					<iframe src="http://192.241.201.203:1880/" width="100%" style="min-height:600px; min-width: 1000px"></iframe>
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					<script type="text/template">
+						### Adding New Nodes:
+						* Intall from npm
+						 * [List of available nodes](http://flows.nodered.org/)
+						* Creating your own nodes requires two components:
+						 * JavaScript file: describes what the node does
+						 * HTML file: properties, edit dialog, help text, etc.
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						### Creating Your Own Nodes: extract-game-id.js
+							//Extracts game Ids from featured games API
+							module.exports = function(RED) {
+							    function ExtractGameIdNode(config) {
+							        RED.nodes.createNode(this, config);
+							        var node = this;
+							        this.on('input', function(msg) {
+							            //msg.payload is used for both input and output
+							            msg.payload = msg.payload.gameList.map(function(gameObject) {
+							                return gameObject.gameId;
+							            });
+							            node.send(msg);
+							        });
+							    }
+						    	RED.nodes.registerType("extract-game-id", ExtractGameIdNode);
+							}
+					</script>
+				</section>
+				<section>
+					<h3>extract-game-id.html</h3>
+					<pre><code id="htmlBlock">
+<script type="text/javascript">
+ RED.nodes.registerType('extract-game-id',{
+  category: 'function',
+  color: '#a6bbcf',
+  defaults: {
+   name: {value:""}
+  },
+  inputs:1,
+  outputs:1,
+  icon: "file.png",
+  label: function() {
+   return this.name||"extract-game-id";
+ }
+});
+</script>
+<script type="text/x-red" data-template-name="extract-game-id">
+ <div class="form-row">
+  <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+  <input type="text" id="node-input-name" placeholder="Name">
+ </div>
+</script>
+<script type="text/x-red" data-help-name="extract-game-id">
+ <p>Extracts Game Ids from the Riot Games Featured Games API</p>
+</script>
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+						<h3>TransNow: My Hackathon Project</h3>
+						<img src="images/transnowDesign.png">
+
+				</section>
+				<section>
+						<h3>Data Flow In AT&T Flow Designer</h3>
+						<img src="images/transnow.png">
+
 				</section>
 			</section>
 			</div>
